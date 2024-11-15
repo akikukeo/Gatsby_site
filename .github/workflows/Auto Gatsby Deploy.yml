@@ -31,7 +31,7 @@ jobs:
     #     run: |
     #       cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
     #       npm run build  # Gatsbyのビルドを実行
-    
+
       - name: Set Git user for gh-pages
         run: |
           git config --global user.name "GitHub Actions"
@@ -40,4 +40,4 @@ jobs:
       - name: Deploy Gatsby site
         run: |
           cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
-          npm run deploy  # デプロイコマンドを実行
+          GH_TOKEN=${{ secrets.GH_TOKEN }} npm run deploy  # GH_TOKENを使って認証

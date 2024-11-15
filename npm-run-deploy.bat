@@ -7,10 +7,7 @@ set /p answer=入力してください:
 if /i "%answer%"=="y" (
     echo deployを開始します。
     pause
-    pushd
-    cd ..\programs
-    start cleannpm.bat
-    popd
+    npm run deploy
     echo deployを完了しました。
 ) else if /i "%answer%"=="n" (
     echo 操作をキャンセルしました。

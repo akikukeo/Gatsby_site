@@ -24,12 +24,13 @@ jobs:
       - name: Install dependencies
         run: |
           cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
+          npm install gh-pages  # gh-pagesパッケージをインストール
           npm install  # 必要な依存関係をインストール
 
-      - name: Build Gatsby site
-        run: |
-          cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
-          npm run build  # Gatsbyのビルドを実行
+    #   - name: Build Gatsby site
+    #     run: |
+    #       cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
+    #       npm run build  # Gatsbyのビルドを実行
 
       - name: Deploy Gatsby site
         run: |

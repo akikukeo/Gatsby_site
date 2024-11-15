@@ -31,6 +31,11 @@ jobs:
     #     run: |
     #       cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
     #       npm run build  # Gatsbyのビルドを実行
+    
+      - name: Set Git user for gh-pages
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
       - name: Deploy Gatsby site
         run: |

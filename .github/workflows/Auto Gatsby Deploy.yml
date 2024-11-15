@@ -27,18 +27,18 @@ jobs:
           npm install gh-pages  # gh-pagesパッケージをインストール
           npm install  # 必要な依存関係をインストール
 
-    #   - name: Build Gatsby site
-    #     run: |
-    #       cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
-    #       npm run build  # Gatsbyのビルドを実行
-
       - name: Set Git user for gh-pages
         run: |
-          GH_TOKEN=${{ secrets.GH_TOKEN }} # GH_TOKENを使って認証
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV  # GH_TOKENを環境変数に設定
+
+      - name: Build Gatsby site
+        run: |
+          cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
+          npm run build  # Gatsbyのビルドを実行
 
       - name: Deploy Gatsby site
         run: |
           cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
-          npm run deploy  
+          npm run deploy  # gh-pagesを使ってデプロイ

@@ -1,0 +1,120 @@
+/* スタイルとか */
+    /* 左右の余白（margin）を設定する */
+    .body-margin-LR {
+        margin-left: 100px;  /* 左側の余白 */
+        margin-right: 100px; /* 右側の余白 */
+    }
+/* 左右の余白（margin）を設定するここまで */
+
+/* テキスト中央寄せ */
+    .text-center {
+        text-align: center;
+        display: block;
+        /* border: 1px solid #000; */
+    }
+    .text-center .text {
+        text-align: left;
+        display: inline-block;
+    }
+/* テキスト中央寄せここまで */
+
+/* 枠線付ける */
+    .bordered {
+        border: 1px solid #000;  /* 黒い2pxの枠 */
+        padding: 20px;            /* 内側の余白 */
+        margin: 10px;             /* 外側の余白 */
+    }
+/* 枠線付けるここまで */
+
+/* テキスト中央寄せ2 */
+    .text-center2 { 
+        margin: 16px auto;
+        text-align: center;
+        display: block;
+        /* border: 1px solid #000; */
+    }
+    .text-center2 ul {
+        padding-left: 0;
+        list-style: none;
+        display: inline-block;
+    }
+    .text-center2 ul li {
+        text-align: left;
+    }
+/* テキスト中央寄せ2ここまで */
+
+/* スタイルとかここまで */ 
+
+
+/* 便利ツール系 */
+/* GitHub Markdown CSS */
+    /* GitHub Markdown CSSの読み込み */
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css');
+    /* 全体のスタイル調整 */
+    .markdown-body {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        font-size: 16px;
+    }
+    /* WARNINGとIMPORTANTのカスタムスタイル */
+    .markdown-body p:has(strong:contains("WARNING")) {
+        background-color: #ffeb3b;
+        padding: 10px;
+        border-left: 5px solid #f44336;
+        font-weight: bold;
+    }
+    .markdown-body p:has(strong:contains("IMPORTANT")) {
+        background-color: #e3f2fd;
+        padding: 10px;
+        border-left: 5px solid #2196f3;
+        font-weight: bold;
+    }
+    /* GitHub Markdown CSSここまで */
+
+/* 便利ツール系ここまで */
+
+
+/* UI系 */
+/* トップ、ホームへ戻るボタン */
+    /***トップへ戻るボタン***/
+    #page-top {
+        position: fixed;
+        right: 10px;
+        bottom: 60px;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        background: #FFF;
+        color: #111;
+        padding: 10px 11px;
+        border: solid 1px;
+        border-radius: 50%;
+        box-shadow: 0 2px 10px -6px rgba(0,0,0,.5), 0 3px 10px -4px rgba(0,0,0,.2);
+        z-index: 10;
+    }
+    #page-top:hover {
+        background: #111;
+        color: #FFF;
+    }
+    /***追従するHOMEボタン***/
+    #home-link {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        background: #fff;
+        color: #111;
+        padding: 10px;
+        border: solid 1px;
+        border-radius: 50%;
+        box-shadow: 0 2px 10px -6px rgba(0,0,0,.5), 0 3px 10px -4px rgba(0,0,0,.2);
+        z-index: 10;
+    }
+    #home-link:hover {
+        background: #111;
+        color: #FFF;
+    }
+/* トップ、ホームへ戻るボタンここまで */
+
+/* UI系ここまで */  

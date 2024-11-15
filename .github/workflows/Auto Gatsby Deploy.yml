@@ -1,0 +1,44 @@
+name: Auto Gatsby Deploy on Push or Pull Request
+
+on:
+  push:
+    branches:
+      - main  # mainブランチにpushした時に実行される
+  pull_request:
+    branches:
+      - main  # mainブランチに向けたプルリクエストが作成された時に実行される
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'  # 必要なNode.jsのバージョンを指定
+
+      - name: Install dependencies
+        run: |
+          cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
+          npm install gh-pages  # gh-pagesパッケージをインストール
+          npm install  # 必要な依存関係をインストール
+
+      - name: Set Git user for gh-pages
+        run: |
+          echo "GH_TOKEN=${{ secrets.GH_TOKEN }}" >> $GITHUB_ENV  # GH_TOKENを環境変数に設定
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+      - name: Build Gatsby site
+        run: |
+          cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
+          npm run build  # Gatsbyのビルドを実行
+
+      - name: Deploy Gatsby site
+        run: |
+          cd Gatsby_site  # Gatsbyサイトのディレクトリに移動
+          npm run deploy  # gh-pagesを使ってデプロイ

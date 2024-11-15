@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinecraftServer Wiki</title>
+    <link rel="stylesheet" href="../../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body class="body-margin-LR">
+    <!-- トップボタンとホームボタン -->
+    <a href="#" id="page-top"><i class="blogicon-chevron-up"></i>TOP</a>
+    <a href="../../index.html" id="home-link"><i class="blogicon-home"></i>HOME</a> 
+
+    <!-- ページタイトル -->
+    <div class="text-center">
+        <h1>MinecraftServer Wiki</h1>
+        <h2>GitHub Document Viewer</h2>
+        <p>Links are not supported!</p>
+    </div>
+
+    <!-- README取得セクション -->
+    <div class="bordered">
+        <div id="readme-content" class="markdown-body">Loading...</div>
+    </div>
+
+    <!-- README取得スクリプト -->
+    <script>
+        async function fetchAndDisplayReadme() {
+            const url = 'https://raw.githubusercontent.com/akikukeo/minecraft-server/refs/heads/main/docs/README.md';
+            try {
+                const response = await fetch(url);
+                if (response.ok) {
+                    const markdown = await response.text();
+                    const htmlContent = marked.parse(markdown);
+                    document.getElementById('readme-content').innerHTML = htmlContent;
+                } else {
+                    console.error('Failed to fetch README:', response.status);
+                    document.getElementById('readme-content').innerText = "READMEの取得に失敗しました。";
+                }
+            } catch (error) {
+                console.error('Error fetching README:', error);
+                document.getElementById('readme-content').innerText = "エラーが発生しました。";
+            }
+        }
+        fetchAndDisplayReadme();
+    </script>
+</body>
+</html>

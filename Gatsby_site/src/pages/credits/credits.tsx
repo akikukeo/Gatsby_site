@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import marked from "marked";
+import { marked } from "marked";
 import "../../styles/style.css"; // CSSのインポート
 
 const CreditsPage = () => {
@@ -17,24 +17,31 @@ const CreditsPage = () => {
     );
   }, []);
 
-  async function fetchAndDisplayReadme(url, elementId) {
+  async function fetchAndDisplayReadme(url: string, elementId: string) {
     try {
       const response = await fetch(url);
       if (response.ok) {
         const markdown = await response.text();
-        const htmlContent = marked.parse(markdown);
-        document.getElementById(elementId).innerHTML = htmlContent;
+        const htmlContent = await marked.parse(markdown);
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.innerHTML = htmlContent;
+        }
       } else {
         console.error(`Failed to fetch ${elementId}:`, response.status);
-        document.getElementById(elementId).innerText = "コンテンツの取得に失敗しました。";
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.innerText = "コンテンツの取得に失敗しました。";
+        }
       }
     } catch (error) {
       console.error(`Error fetching ${elementId}:`, error);
-      document.getElementById(elementId).innerText = "エラーが発生しました。";
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.innerText = "エラーが発生しました。";
+      }
     }
-  }
-
-  return (
+  }  return (
     <div>
       <a href="#" id="page-top">
         <i className="blogicon-chevron-up"></i>TOP

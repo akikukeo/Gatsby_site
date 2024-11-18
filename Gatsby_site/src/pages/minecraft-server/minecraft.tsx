@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "../../styles/style.css"; // 必要に応じてCSSをインポート
+import "../../styles/style.css"; // CSSをインポート
 import { Link } from "gatsby"; // GatsbyのLinkコンポーネントを使用
-import marked from "marked"; // markedをインポート
+import { marked } from "marked"; // markedをインポート
+import { Helmet } from "react-helmet-async";
+import DOMPurify from "dompurify"; // DOMPurifyをインポート
 
 const MinecraftWikiPage = () => {
-  const [readmeContent, setReadmeContent] = useState("Loading...");
+  const [readmeContent, setReadmeContent] = useState<string>("Loading..."); // 型をstringに明示
 
   useEffect(() => {
     async function fetchAndDisplayReadme() {
@@ -13,8 +15,14 @@ const MinecraftWikiPage = () => {
         const response = await fetch(url);
         if (response.ok) {
           const markdown = await response.text();
-          const htmlContent = marked.parse(markdown);
-          setReadmeContent(htmlContent);
+          const htmlContent = marked.parse(markdown); // markdownをHTMLに変換
+          
+
+          // sanitizeの戻り値が確実にstringであると明示
+        const sanitizedContent: string = DOMPurify.sanitize(htmlContent);
+
+
+          setReadmeContent(sanitizedContent); // サニタイズされたHTMLをセット
         } else {
           console.error('Failed to fetch README:', response.status);
           setReadmeContent("READMEの取得に失敗しました。");
@@ -30,15 +38,14 @@ const MinecraftWikiPage = () => {
 
   return (
     <div>
-      <head>
-        <meta charset="UTF-8" />
+      <Helmet>
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>MinecraftServer Wiki</title>
         <link rel="stylesheet" href="../../style.css" />
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-      </head>
+      </Helmet>
 
-      <body className="body-margin-LR">
+      <div className="body-margin-LR">
         {/* トップボタンとホームボタン */}
         <a href="#" id="page-top">
           <i className="blogicon-chevron-up"></i>TOP
@@ -59,10 +66,10 @@ const MinecraftWikiPage = () => {
           <div
             id="readme-content"
             className="markdown-body"
-            dangerouslySetInnerHTML={{ __html: readmeContent }}
+            dangerouslySetInnerHTML={{ __html: readmeContent }} // dangerouslySetInnerHTMLの使い方
           />
         </div>
-      </body>
+      </div>
     </div>
   );
 };

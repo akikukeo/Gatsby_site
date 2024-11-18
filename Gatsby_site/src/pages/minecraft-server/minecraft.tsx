@@ -19,6 +19,7 @@ const MinecraftWikiPage = () => {
           
 
           // sanitizeの戻り値が確実にstringであると明示
+          // @ts-ignore(どうしても治らない（泣）
         const sanitizedContent: string = DOMPurify.sanitize(htmlContent);
 
 
@@ -48,11 +49,11 @@ const MinecraftWikiPage = () => {
       <div className="body-margin-LR">
         {/* トップボタンとホームボタン */}
         <a href="#" id="page-top">
-          <i className="blogicon-chevron-up"></i>TOP
-        </a>
-        <Link to="../../index.html" id="home-link">
-          <i className="blogicon-home"></i>HOME
-        </Link>
+            <i className="blogicon-chevron-up"></i>TOP
+          </a>
+          <Link to="/" id="home-link">
+            <i className="blogicon-home"></i>HOME
+          </Link>
 
         {/* ページタイトル */}
         <div className="text-center">

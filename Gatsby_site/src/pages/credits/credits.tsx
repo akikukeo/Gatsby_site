@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { marked } from "marked";
 import "../../styles/style.css"; // CSSのインポート
+import { Link } from "gatsby";
 
 const CreditsPage = () => {
   useEffect(() => {
@@ -43,12 +44,13 @@ const CreditsPage = () => {
     }
   }  return (
     <div>
+      {/* トップボタンとホームボタン */}
       <a href="#" id="page-top">
-        <i className="blogicon-chevron-up"></i>TOP
-      </a>
-      <a href="../../index.html" id="home-link">
-        <i className="blogicon-home"></i>HOME
-      </a>
+            <i className="blogicon-chevron-up"></i>TOP
+          </a>
+          <Link to="/" id="home-link">
+            <i className="blogicon-home"></i>HOME
+          </Link>
 
       <div className="text-center">
         <h1>Credits</h1>

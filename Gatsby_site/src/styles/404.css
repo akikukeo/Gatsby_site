@@ -1,0 +1,20 @@
+/* src/styles/404.css */
+.not-found-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.not-found-container h1 {
+  font-size: 2rem;
+  /* color: red; */
+}
+
+.not-found-container p {
+  font-size: 1rem;
+}
+
+.not-found-container a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: blue;
+}

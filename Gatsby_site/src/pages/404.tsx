@@ -1,49 +1,38 @@
-import * as React from "react"
-import { Link } from "gatsby"
+// src/pages/404.js
+import React from 'react';
+import { Link } from 'gatsby';
+import '../styles/404.css'; // CSSファイルのインポート
+import '../styles/style.css';
+import { Helmet } from 'react-helmet-async';
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const NotFoundPage = () => (
+  <div className="not-found-container">
+    <Helmet>
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>404NotFound</title>
+    </Helmet>
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+    {/* トップボタンとホームボタン */}
+    <Link to="#page-top" id="page-top">
+      <i className="blogicon-chevron-up"></i>TOP
+    </Link>
+    <Link to="/" id="home-link">
+      <i className="blogicon-home"></i>HOME
+    </Link>
 
-const NotFoundPage = () => {
-  return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    <h1>404 - ページが見つかりません</h1>
+    <p>お探しのページは存在しないか、削除された可能性があります。</p>
+    <div className="links">
+      <div className="link">
+        <p>
+          <Link to="/" className="links">
+            HOMEへ戻る
+          </Link>
+        </p>
+      </div>
+    </div>
+  </div>
+);
 
-export default NotFoundPage
-
-export const Head = () => <title>Not found</title>
+export default NotFoundPage;

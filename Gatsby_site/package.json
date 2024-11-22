@@ -16,7 +16,9 @@
     "ts-start": "node src/pages/index.tsx",
     "serve": "gatsby serve",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css}'",
+    "formating": "npm run format"
   },
   "dependencies": {
     "@types/dompurify": "^3.0.5",

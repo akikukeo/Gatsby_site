@@ -1,0 +1,31 @@
+/* セクションのタイトル余白を調整 */
+h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.1em;
+  font-size: 20px;
+}
+h4 {
+  margin-top: 16px;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+/* 各項目のリスト余白を調整 */
+ul {
+  margin: 0;
+  padding-left: 1px;
+}
+
+/* text スタイルの調整 */
+.text {
+  color: #000;
+  font-size: 16px;
+  font-family: 'メイリオ', 'Meiryo', 'ヒラギノ角ゴ Pro W3',
+    'Hiragino Kaku Gothic Pro', 'Osaka', 'MS PGothic', 'MS Pゴシック',
+    sans-serif;
+  line-height: 1.8em; /* 行間を広げる */
+  letter-spacing: 0em;
+  word-break: break-word;
+  white-space: pre-wrap;
+  text-align: left;
+}
